@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/ah_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AH_TV_NAME_S" />
+
+    <EditText
+        android:id="@+id/ah_et_name"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/ah_tv_os"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AH_TV_OSTYPE_S" />
+
+    <Spinner
+        android:id="@+id/ah_spn_os"
+        android:layout_width="match_parent"
+        android:layout_height="43dp" />
+
+    <TextView
+        android:id="@+id/ah_tv_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AH_TV_IPADRESS_S" />
+
+    <EditText
+        android:id="@+id/ah_et_ip"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/ah_tv_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AH_TV_SSHPORT_S" />
+
+    <EditText
+        android:id="@+id/ah_et_sp"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/ah_tv_usr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AH_TV_USERNAME_S" />
+
+    <EditText
+        android:id="@+id/ah_et_usr"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/ah_tv_passwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AH_TV_PASSWD_S" />
+
+    <EditText
+        android:id="@+id/ah_et_passwd"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/ah_btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AH_BTN_SAVE" />
+
+</LinearLayout>

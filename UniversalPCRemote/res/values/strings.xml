@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">UniversalPCRemote</string>
+    <string name="AH_TV_NAME_S">Name</string>
+    <string name="AH_TV_OSTYPE_S">Operating System</string>
+    <string name="AH_TV_IPADRESS_S">IP</string>
+    <string name="AH_TV_SSHPORT_S">SSH Port</string>
+    <string name="AH_TV_USERNAME_S">Username</string>
+    <string name="AH_TV_PASSWD_S">Password</string>
+    <string name="AH_BTN_SAVE">Save</string>
+    <string name="MA_LV_ADD_S">Add new target</string>
+
+</resources>
