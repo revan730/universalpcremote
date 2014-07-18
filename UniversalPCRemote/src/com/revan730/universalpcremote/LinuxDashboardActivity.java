@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public class LinuxDashboardActivity extends Activity implements OnClickListener {
 	
@@ -31,13 +32,13 @@ public class LinuxDashboardActivity extends Activity implements OnClickListener 
 		switch (view.getId()) {
 		case R.id.ldsh_btn_rhythmbox:
 			Intent dashintent = getIntent();
-			Intent rtmintent = new Intent(this,RhythmboxCtlActivity.class);
+			Intent rtmintent = new Intent (this,RhythmboxCtlActivity.class);
 			rtmintent.putExtra("ip", dashintent.getStringExtra("ip"));
 			rtmintent.putExtra("ssh_port", dashintent.getIntExtra("ssh_port",22));
 			rtmintent.putExtra("user", dashintent.getStringExtra("user"));
 			rtmintent.putExtra("pass", dashintent.getStringExtra("pass"));
 			startActivity(rtmintent);
-			
+			Toast.makeText(getApplicationContext(), "Launched", Toast.LENGTH_SHORT).show();
 			
 		}
 		
