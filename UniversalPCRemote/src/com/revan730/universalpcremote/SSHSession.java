@@ -44,7 +44,7 @@ ByteArrayOutputStream baos = new ByteArrayOutputStream();
 channelssh.setOutputStream(baos);
 channelssh.setInputStream(null);
 InputStream iaos = channelssh.getInputStream();
-channelssh.setCommand("env DISPLAY=:0.0 /bin/rhythmbox-client --no-start --next");
+channelssh.setCommand(command);
 channelssh.connect();
 channelssh.disconnect();
 session.disconnect();

@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class LinuxDashboardActivity extends Activity implements OnClickListener {
 	
+	ImageButton btnRmb;
+	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.linuxdashboard);
+		btnRmb = (ImageButton) findViewById(R.id.ldsh_btn_rhythmbox);
+		btnRmb.setOnClickListener(this);
 		//Intent intent = getIntent();
 		//try {
 			//SSHSession ses = new SSHSession(intent.getStringExtra("ip"), intent.getIntExtra("ssh_port", 22), intent.getStringExtra("user"), intent.getStringExtra("pass"));
@@ -29,8 +34,7 @@ public class LinuxDashboardActivity extends Activity implements OnClickListener 
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.ldsh_btn_rhythmbox:
+
 			Intent dashintent = getIntent();
 			Intent rtmintent = new Intent (this,RhythmboxCtlActivity.class);
 			rtmintent.putExtra("ip", dashintent.getStringExtra("ip"));
@@ -38,10 +42,7 @@ public class LinuxDashboardActivity extends Activity implements OnClickListener 
 			rtmintent.putExtra("user", dashintent.getStringExtra("user"));
 			rtmintent.putExtra("pass", dashintent.getStringExtra("pass"));
 			startActivity(rtmintent);
-			Toast.makeText(getApplicationContext(), "Launched", Toast.LENGTH_SHORT).show();
 			
-		}
-		
 	}
 
 }
