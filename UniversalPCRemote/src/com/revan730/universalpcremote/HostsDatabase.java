@@ -1,3 +1,5 @@
+// This class is used to access database with information about remote hosts 
+
 package com.revan730.universalpcremote;
 
 import android.content.Context;

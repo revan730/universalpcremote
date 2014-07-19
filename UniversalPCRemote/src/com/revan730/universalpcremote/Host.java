@@ -1,6 +1,10 @@
+/* This class is used to store information about remote host (such as ip or OS)
+	 for it's further use,like transfering connection data to ssh client class */
+
 package com.revan730.universalpcremote;
 
 public class Host {
+	
     String name;
     String os;
     String ip;

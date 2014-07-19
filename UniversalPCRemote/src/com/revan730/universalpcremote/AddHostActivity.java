@@ -1,6 +1,5 @@
 // Activity that gathers information about host from user and adds it to database
 
-
 package com.revan730.universalpcremote;
 
 import android.app.Activity;
@@ -36,6 +35,7 @@ public class AddHostActivity extends Activity implements OnClickListener {
 	String spnsel;
 
 	protected void onCreate(Bundle savedInstanceState){
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addhost);
 		 String [] items = {"Linux","Windows"}; 
@@ -84,6 +84,7 @@ public class AddHostActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		
 		switch (v.getId()) {
 		case R.id.ah_btn_save:
 			HostsDatabase sqh = new HostsDatabase(this);

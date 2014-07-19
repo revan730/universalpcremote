@@ -1,3 +1,5 @@
+//Activity with dashboard with shortcuts for all supported Linux applications controls
+
 package com.revan730.universalpcremote;
 
 import android.app.Activity;
@@ -14,21 +16,11 @@ public class LinuxDashboardActivity extends Activity implements OnClickListener 
 	ImageButton btnRmb;
 	
 	public void onCreate(Bundle savedInstanceState){
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.linuxdashboard);
 		btnRmb = (ImageButton) findViewById(R.id.ldsh_btn_rhythmbox);
 		btnRmb.setOnClickListener(this);
-		//Intent intent = getIntent();
-		//try {
-			//SSHSession ses = new SSHSession(intent.getStringExtra("ip"), intent.getIntExtra("ssh_port", 22), intent.getStringExtra("user"), intent.getStringExtra("pass"));
-			//String response = ses.execute("rhythmbox-client --no-start --play-pause");
-			//Log.d("myLogs", "Response =" + response);
-		//} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			//Log.d("myLogs",e.toString());
-		//}
-		
 		
 	}
 

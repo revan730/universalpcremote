@@ -1,3 +1,6 @@
+/*Main activity.Used to select remote host from list and call Linux or Windows dashboard activity,
+call AddHostActivity to add hosts to database */
+
 package com.revan730.universalpcremote;
 
 import java.util.ArrayList;

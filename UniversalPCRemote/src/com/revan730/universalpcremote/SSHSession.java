@@ -12,6 +12,7 @@ import android.util.Log;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelShell;
 import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 public class SSHSession {
@@ -47,9 +48,22 @@ InputStream iaos = channelssh.getInputStream();
 channelssh.setCommand(command);
 channelssh.connect();
 channelssh.disconnect();
-session.disconnect();
 
 return "id =" + channelssh.getExitStatus();
+	}
+	
+	public void disconnect() {
+		session.disconnect();
+	}
+	
+	public boolean reconnect(){
+		try {
+			session.connect();
+			return true;
+		} catch (JSchException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	 public static class MyLogger implements com.jcraft.jsch.Logger {

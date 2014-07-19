@@ -33,6 +33,21 @@ public class RhythmboxCtlActivity extends Activity implements OnClickListener {
 		}
 				
 	}
+	
+	public void onPause(){
+		super.onPause();
+		ses.disconnect();
+	}
+	
+	public void onDestroy(){
+		super.onDestroy();
+		ses.disconnect();
+	}
+	
+	public void onResume(){
+		super.onResume();
+		ses.reconnect();
+	}
 
 	@Override
 	public void onClick(View v) {

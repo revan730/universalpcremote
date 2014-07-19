@@ -1,3 +1,5 @@
+// Adapter class for listview on main activity
+
 package com.revan730.universalpcremote;
 
 import java.util.ArrayList;
