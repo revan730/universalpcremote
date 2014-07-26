@@ -25,8 +25,10 @@ public class LinuxDashboardActivity extends Activity implements OnClickListener 
 	}
 
 	@Override
-	public void onClick(View view) {
+	public void onClick(View v) {
 
+			switch (v.getId()) {
+			case R.id.ldsh_btn_rhythmbox:
 			Intent dashintent = getIntent();
 			Intent rtmintent = new Intent (this,RhythmboxCtlActivity.class);
 			rtmintent.putExtra("ip", dashintent.getStringExtra("ip"));
@@ -34,6 +36,18 @@ public class LinuxDashboardActivity extends Activity implements OnClickListener 
 			rtmintent.putExtra("user", dashintent.getStringExtra("user"));
 			rtmintent.putExtra("pass", dashintent.getStringExtra("pass"));
 			startActivity(rtmintent);
+			break;
+			
+			case R.id.ldsh_btn_power:
+				Intent dshintent = getIntent();
+				Intent pwrintent = new Intent (this,LinPowerCtlActivity.class);
+				pwrintent.putExtra("ip", dshintent.getStringExtra("ip"));
+				pwrintent.putExtra("ssh_port", dshintent.getIntExtra("ssh_port",22));
+				pwrintent.putExtra("user", dshintent.getStringExtra("user"));
+				pwrintent.putExtra("pass", dshintent.getStringExtra("pass"));
+				startActivity(pwrintent);	
+			
+			}
 			
 	}
 

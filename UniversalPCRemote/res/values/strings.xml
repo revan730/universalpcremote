@@ -9,5 +9,7 @@
     <string name="AH_TV_PASSWD_S">Password</string>
     <string name="AH_BTN_SAVE">Save</string>
     <string name="MA_LV_ADD_S">Add new target</string>
+    <string name="LPCL_BTN_POFF">Shutdown</string>
+    <string name="LPCL_BTN_REBOOT">Reboot</string>
 
 </resources>

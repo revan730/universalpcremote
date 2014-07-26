@@ -31,8 +31,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		HostsDatabase sqh = new HostsDatabase(this);
 		SQLiteDatabase sqdb = sqh.getWritableDatabase();
 		
-		//fillAr();
-		Cursor cursor = sqdb.query(sqh.TABLE_NAME, null , null, null, null, null, null);//TODO Crash on this point,DEBUG
+		Cursor cursor = sqdb.query(sqh.TABLE_NAME, null , null, null, null, null, null);
 		while (cursor.moveToNext()) {
 			hosts.add(new Host(cursor.getString(cursor.getColumnIndex(sqh.HOSTNAME)),cursor.getString(cursor.getColumnIndex(sqh.OSTYPE)),cursor.getString(cursor.getColumnIndex(sqh.IPADRESS)),cursor.getInt(cursor.getColumnIndex(sqh.SSH_PORT)),cursor.getString(cursor.getColumnIndex(sqh.USERNAME)),cursor.getString(cursor.getColumnIndex(sqh.PASSWORD))));
 		}
