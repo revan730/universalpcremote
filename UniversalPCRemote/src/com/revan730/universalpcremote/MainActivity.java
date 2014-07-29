@@ -6,6 +6,9 @@ package com.revan730.universalpcremote;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -24,10 +28,11 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	HostsDatabase sqh;
 	SQLiteDatabase sqdb;
 	ListView lvHosts;
+	final String[] options = {"Edit","Remove"};
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.main);		
 		HostsDatabase sqh = new HostsDatabase(this);
 		SQLiteDatabase sqdb = sqh.getWritableDatabase();
 		
@@ -41,6 +46,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		ListView lvHosts = (ListView) findViewById(R.id.pcselectlistView);
 		lvHosts.setAdapter(hostAdapter);
 		lvHosts.setOnItemClickListener(this);
+		LongClickL clickl = new LongClickL();
+		lvHosts.setOnItemLongClickListener(clickl);
 
 		
 		sqdb.close();
@@ -86,5 +93,27 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		}
 	}
 	
+	private class LongClickL implements OnItemLongClickListener {
+
+		@Override
+		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+				int position, long arg3) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+			builder.setTitle("Select option").setItems(options, new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int item) {					
+					
+					
+				}
+			});
+			AlertDialog dialog = builder.create();
+			dialog.show();
+			
+
+			return false;
+		}
+		
+	}
 
 }
