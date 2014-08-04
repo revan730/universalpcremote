@@ -4,6 +4,7 @@ package com.revan730.universalpcremote;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 
 public class AddHostActivity extends Activity implements OnClickListener {
 	
+	Boolean update = false;
+	int id;
 	TextView tvName;
 	TextView tvOS;
 	TextView tvIP;
@@ -38,6 +41,8 @@ public class AddHostActivity extends Activity implements OnClickListener {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addhost);
+		Intent intent = getIntent();
+		id = intent.getIntExtra("id", 0); 
 		 String [] items = {"Linux","Windows"}; 
 		tvName = (TextView) findViewById(R.id.ah_tv_name);
 		tvOS = (TextView) findViewById(R.id.ah_tv_os);
@@ -51,6 +56,9 @@ public class AddHostActivity extends Activity implements OnClickListener {
 		etUser = (EditText) findViewById(R.id.ah_et_usr);
 		etPassword = (EditText) findViewById(R.id.ah_et_passwd);
 		spnOS = (Spinner) findViewById(R.id.ah_spn_os);
+		if (id !=0){
+			update = true;
+		}
 		btnSave = (Button) findViewById(R.id.ah_btn_save);
 		btnSave.setOnClickListener(this);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
@@ -96,7 +104,11 @@ public class AddHostActivity extends Activity implements OnClickListener {
 			cv.put(sqh.SSH_PORT, etSSHPort.getText().toString());
 			cv.put(sqh.USERNAME, etUser.getText().toString());
 			cv.put(sqh.PASSWORD, etPassword.getText().toString());
-			sqdb.insert(sqh.TABLE_NAME, sqh.HOSTNAME, cv);
+			if (update) {
+				sqdb.update(sqh.TABLE_NAME, cv, sqh._ID +" = " + id, null);
+			} else {
+				sqdb.insert(sqh.TABLE_NAME, sqh.HOSTNAME, cv);
+			}
 			sqdb.close();
 			sqh.close();
 		Toast toast =	Toast.makeText(getApplicationContext(),"added",Toast.LENGTH_SHORT);

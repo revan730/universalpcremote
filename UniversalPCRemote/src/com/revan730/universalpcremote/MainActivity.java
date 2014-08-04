@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	SQLiteDatabase sqdb;
 	ListView lvHosts;
 	final String[] options = {"Edit","Remove"};
+	int clickeditem;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		
 		Cursor cursor = sqdb.query(sqh.TABLE_NAME, null , null, null, null, null, null);
 		while (cursor.moveToNext()) {
-			hosts.add(new Host(cursor.getString(cursor.getColumnIndex(sqh.HOSTNAME)),cursor.getString(cursor.getColumnIndex(sqh.OSTYPE)),cursor.getString(cursor.getColumnIndex(sqh.IPADRESS)),cursor.getInt(cursor.getColumnIndex(sqh.SSH_PORT)),cursor.getString(cursor.getColumnIndex(sqh.USERNAME)),cursor.getString(cursor.getColumnIndex(sqh.PASSWORD))));
+			hosts.add(new Host(cursor.getInt(cursor.getColumnIndex(sqh._ID)),cursor.getString(cursor.getColumnIndex(sqh.HOSTNAME)),cursor.getString(cursor.getColumnIndex(sqh.OSTYPE)),cursor.getString(cursor.getColumnIndex(sqh.IPADRESS)),cursor.getInt(cursor.getColumnIndex(sqh.SSH_PORT)),cursor.getString(cursor.getColumnIndex(sqh.USERNAME)),cursor.getString(cursor.getColumnIndex(sqh.PASSWORD))));
 		}
 		cursor.close();
 		
@@ -98,11 +100,26 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		@Override
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 				int position, long arg3) {
+			clickeditem = hosts.get(position).id;
 			AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 			builder.setTitle("Select option").setItems(options, new DialogInterface.OnClickListener() {
 				
 				@Override
-				public void onClick(DialogInterface dialog, int item) {					
+				public void onClick(DialogInterface dialog, int item) {	
+					
+					switch (item){
+					case 0:
+						Intent intent = new Intent(getApplicationContext(),AddHostActivity.class);
+						intent.putExtra("id", clickeditem);
+						startActivity(intent);
+					case 1:
+						HostsDatabase sqh = new HostsDatabase(getApplicationContext());
+						SQLiteDatabase sqdb = sqh.getWritableDatabase();
+						Log.i("myLogs","item id = " + clickeditem);
+						sqdb.delete(sqh.TABLE_NAME, sqh._ID +" = " + clickeditem, null);
+						sqh.close();
+						sqdb.close();
+					}
 					
 					
 				}

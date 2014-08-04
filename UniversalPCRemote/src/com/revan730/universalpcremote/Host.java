@@ -5,6 +5,7 @@ package com.revan730.universalpcremote;
 
 public class Host {
 	
+	int id;
     String name;
     String os;
     String ip;
@@ -14,7 +15,8 @@ public class Host {
     int image;
     
     
-    Host (String _name, String _os, String _ip, int _ssh_port, String _user, String _passwd ) {
+    Host (int _id, String _name, String _os, String _ip, int _ssh_port, String _user, String _passwd ) {
+    	id= _id;
     	name = _name;
     	os = _os;
     	ip = _ip;

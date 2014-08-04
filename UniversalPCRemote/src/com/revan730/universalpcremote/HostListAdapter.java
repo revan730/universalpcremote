@@ -5,7 +5,6 @@ package com.revan730.universalpcremote;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ public class HostListAdapter extends BaseAdapter {
 	Context ctx;
 	LayoutInflater linflater;
 	ArrayList<Host> objects;
-	final String LOG_TAG = "myLogs";
 	
 	HostListAdapter (Context context,ArrayList<Host> host){
 		ctx = context;
@@ -54,13 +52,11 @@ public class HostListAdapter extends BaseAdapter {
 		Host h = getHost(position);
 		
 		((TextView) view.findViewById(R.id.ma_lvi_tvName)).setText(h.name);
-		Log.d(LOG_TAG,"OS Type : " + h.os);
-	if (h.os.equals("win")){((ImageView) view.findViewById(R.id.ma_lvi_ivIcon)).setImageResource(R.drawable.ic_win);
-	    Log.d(LOG_TAG,"Win icon set");
+	if (h.os.equals("win")){
+		((ImageView) view.findViewById(R.id.ma_lvi_ivIcon)).setImageResource(R.drawable.ic_win);
 	}
 	else if (h.os.equals("linux")) {
 		((ImageView) view.findViewById(R.id.ma_lvi_ivIcon)).setImageResource(R.drawable.ic_arch);
-		Log.d(LOG_TAG, "Linux icon set");
 	}
 		
 		return view;
